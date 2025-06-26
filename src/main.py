@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage import io, color
+import matplotlib.ticker as mticker
+from skimage import io
 import os
 import tqdm
 
@@ -46,24 +47,25 @@ if __name__ == "__main__":
     ## a) mit allen Pixeln der Bildausschnitte
     cars = np.concatenate(cars)
     plt.figure(figsize=(10, 5))
-    plt.hist(cars, bins=256, density=True, alpha=0.5, color='blue', label='Cars - All Pixels')
-    plt.title('Grauwertverteilung der Fahrzeuge (alle Pixel)')
+    plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Cars - All Pixels')
+    plt.ylim(0, 0.02)
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
     plt.xlabel('Grauwert')
     plt.ylabel('Dichte')
-    plt.legend()
+    plt.tight_layout()
     plt.savefig('plots/cars_all_pixels.png')
     
     print("Grauwertverteilung der Fahrzeuge (alle Pixel) gespeichert als 'cars_all_pixels.png'")
     
-    
     ## b) nur auf Basis der jeweils zentralen 3x3 Pixel eines jeden Bildausschnittes
     cars_central = np.concatenate(cars_central)
     plt.figure(figsize=(10, 5))
-    plt.hist(cars_central, bins=256, density=True, alpha=0.5, color='orange', label='Cars - Central 3x3 Pixels')
-    plt.title('Grauwertverteilung der Fahrzeuge (zentrale 3x3 Pixel)')
+    plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Cars - Central 3x3 Pixels')
+    plt.ylim(0, 0.02)
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
     plt.xlabel('Grauwert')
     plt.ylabel('Dichte')
-    plt.legend()
+    plt.tight_layout()
     plt.savefig('plots/cars_central.png')
     
     print("Grauwertverteilung der Fahrzeuge (zentrale 3x3 Pixel) gespeichert als 'cars_central.png'")
@@ -72,11 +74,12 @@ if __name__ == "__main__":
     ## c) nur auf Basis der außerhalb der zentralen 3x3 Pixel liegenden Pixel
     cars_outside_central = np.concatenate(cars_outside_central)
     plt.figure(figsize=(10, 5))
-    plt.hist(cars_outside_central, bins=256, density=True, alpha=0.5, color='green', label='Cars - Outside Central 3x3 Pixels')
-    plt.title('Grauwertverteilung der Fahrzeuge (außerhalb zentrale 3x3 Pixel)')
+    plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Cars - Outside Central 3x3 Pixels')
+    plt.ylim(0, 0.02)
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
     plt.xlabel('Grauwert')
     plt.ylabel('Dichte')
-    plt.legend()
+    plt.tight_layout()
     plt.savefig('plots/cars_outside_central.png')
     
     print("Grauwertverteilung der Fahrzeuge (außerhalb zentrale 3x3 Pixel) gespeichert als 'cars_outside_central.png'")
@@ -84,13 +87,15 @@ if __name__ == "__main__":
     
     # Bonus --> Alle drei Verteilungen in einem Plot
     plt.figure(figsize=(10, 5))
-    plt.hist(cars, bins=256, density=True, alpha=0.5, color='blue', label='Cars - All Pixels')
-    plt.hist(cars_central, bins=256, density=True, alpha=0.5, color='orange', label='Cars - Central 3x3 Pixels')
-    plt.hist(cars_outside_central, bins=256, density=True, alpha=0.5, color='green', label='Cars - Outside Central 3x3 Pixels')
-    plt.title('Grauwertverteilung der Fahrzeuge (alle Pixel, zentrale 3x3 Pixel, außerhalb zentrale 3x3 Pixel)')
+    plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Alle Pixel')
+    plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Zentrale 3x3 Pixel')
+    plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Außerhalb zentrale 3x3 Pixel')
+    plt.ylim(0, 0.02)
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
     plt.xlabel('Grauwert')
     plt.ylabel('Dichte')
     plt.legend()
+    plt.tight_layout()
     plt.savefig('plots/cars_all_distributions.png')
     
     print("Grauwertverteilung der Fahrzeuge (alle Verteilungen) gespeichert als 'cars_all_distributions.png'")
@@ -101,11 +106,12 @@ if __name__ == "__main__":
     ### 3. Stellen Sie die empirische Grauwertverteilung der Straßenflächen auf und visualisieren Sie diese.
     streets = np.concatenate(streets)
     plt.figure(figsize=(10, 5))
-    plt.hist(streets, bins=256, density=True, alpha=0.5, color='purple', label='Streets')
-    plt.title('Grauwertverteilung der Straßenflächen')
+    plt.hist(streets, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='purple', label='Streets')
+    plt.ylim(0, 0.02)
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
     plt.xlabel('Grauwert')
     plt.ylabel('Dichte')
-    plt.legend()
+    plt.tight_layout()
     plt.savefig('plots/streets_distribution.png')
     
     print("Grauwertverteilung der Straßenflächen gespeichert als 'streets_distribution.png'")
