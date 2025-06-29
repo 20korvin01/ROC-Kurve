@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+from scipy.ndimage import label
 from skimage import io
 import os
 import tqdm
@@ -144,6 +145,10 @@ if __name__ == "__main__":
 
     plt.figure(figsize=(10, 5))
     plt.scatter(false_positive_rates_1a3, true_positive_rates_1a3, label='ROC-Kurve (All cars vs Streets)')
+    plt.scatter(0,0,color='red',label='ausgewählte Schwellwerte') # dummy-plot für übersichtliche legende
+    for i in range(0, len(false_positive_rates_1a3), 20):
+        plt.text(false_positive_rates_1a3[i], true_positive_rates_1a3[i]+0.02, str(i), fontsize=8, ha='right', va='bottom')
+        plt.scatter(false_positive_rates_1a3[i], true_positive_rates_1a3[i],color='red')
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
     plt.title('ROC-Kurve für gesamte Fahrzeugbilder gegen Straßenbilder')
     plt.xlabel('False Positive Rate')
@@ -181,6 +186,10 @@ if __name__ == "__main__":
 
     plt.figure(figsize=(10, 5))
     plt.scatter(false_positive_rates_1b3, true_positive_rates_1b3, label='ROC-Kurve (Central cars vs Streets)')
+    plt.scatter(0,0,color='red',label='ausgewählte Schwellwerte') # dummy-plot für übersichtliche legende
+    for i in range(0, len(false_positive_rates_1b3), 20):
+        plt.text(false_positive_rates_1b3[i], true_positive_rates_1b3[i]+0.02, str(i), fontsize=8, ha='right', va='bottom')
+        plt.scatter(false_positive_rates_1b3[i], true_positive_rates_1b3[i],color='red')
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
     plt.title('ROC-Kurve für zentrale 3x3 Pixel der Fahrzeugbilder gegen Straßenbilder')
     plt.xlabel('False Positive Rate')
