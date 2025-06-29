@@ -46,76 +46,142 @@ if __name__ == "__main__":
     ### 1. Stellen Sie drei empirische Grauwertverteilungen für Fahrzeuge auf und visualisieren Sie diese:
     ## a) mit allen Pixeln der Bildausschnitte
     cars = np.concatenate(cars)
-    plt.figure(figsize=(10, 5))
-    plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Cars - All Pixels')
-    plt.ylim(0, 0.02)
-    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
-    plt.xlabel('Grauwert')
-    plt.ylabel('Dichte')
-    plt.tight_layout()
-    plt.savefig('plots/cars_all_pixels.png')
+    print(len(cars), "Pixel in allen Fahrzeugbildern")
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Cars - All Pixels')
+    # plt.ylim(0, 0.02)
+    # plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
+    # plt.xlabel('Grauwert')
+    # plt.ylabel('Dichte')
+    # plt.tight_layout()
+    # plt.savefig('plots/cars_all_pixels.png')
     
-    print("Grauwertverteilung der Fahrzeuge (alle Pixel) gespeichert als 'cars_all_pixels.png'")
+    # print("Grauwertverteilung der Fahrzeuge (alle Pixel) gespeichert als 'cars_all_pixels.png'")
     
     ## b) nur auf Basis der jeweils zentralen 3x3 Pixel eines jeden Bildausschnittes
     cars_central = np.concatenate(cars_central)
-    plt.figure(figsize=(10, 5))
-    plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Cars - Central 3x3 Pixels')
-    plt.ylim(0, 0.02)
-    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
-    plt.xlabel('Grauwert')
-    plt.ylabel('Dichte')
-    plt.tight_layout()
-    plt.savefig('plots/cars_central.png')
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Cars - Central 3x3 Pixels')
+    # plt.ylim(0, 0.02)
+    # plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
+    # plt.xlabel('Grauwert')
+    # plt.ylabel('Dichte')
+    # plt.tight_layout()
+    # plt.savefig('plots/cars_central.png')
     
-    print("Grauwertverteilung der Fahrzeuge (zentrale 3x3 Pixel) gespeichert als 'cars_central.png'")
+    # print("Grauwertverteilung der Fahrzeuge (zentrale 3x3 Pixel) gespeichert als 'cars_central.png'")
     
     
     ## c) nur auf Basis der außerhalb der zentralen 3x3 Pixel liegenden Pixel
     cars_outside_central = np.concatenate(cars_outside_central)
-    plt.figure(figsize=(10, 5))
-    plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Cars - Outside Central 3x3 Pixels')
-    plt.ylim(0, 0.02)
-    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
-    plt.xlabel('Grauwert')
-    plt.ylabel('Dichte')
-    plt.tight_layout()
-    plt.savefig('plots/cars_outside_central.png')
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Cars - Outside Central 3x3 Pixels')
+    # plt.ylim(0, 0.02)
+    # plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
+    # plt.xlabel('Grauwert')
+    # plt.ylabel('Dichte')
+    # plt.tight_layout()
+    # plt.savefig('plots/cars_outside_central.png')
     
-    print("Grauwertverteilung der Fahrzeuge (außerhalb zentrale 3x3 Pixel) gespeichert als 'cars_outside_central.png'")
+    # print("Grauwertverteilung der Fahrzeuge (außerhalb zentrale 3x3 Pixel) gespeichert als 'cars_outside_central.png'")
     
     
     # Bonus --> Alle drei Verteilungen in einem Plot
-    plt.figure(figsize=(10, 5))
-    plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Alle Pixel')
-    plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Zentrale 3x3 Pixel')
-    plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Außerhalb zentrale 3x3 Pixel')
-    plt.ylim(0, 0.02)
-    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
-    plt.xlabel('Grauwert')
-    plt.ylabel('Dichte')
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig('plots/cars_all_distributions.png')
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(cars, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='blue', label='Alle Pixel')
+    # plt.hist(cars_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='orange', label='Zentrale 3x3 Pixel')
+    # plt.hist(cars_outside_central, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='green', label='Außerhalb zentrale 3x3 Pixel')
+    # plt.ylim(0, 0.02)
+    # plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
+    # plt.xlabel('Grauwert')
+    # plt.ylabel('Dichte')
+    # plt.legend()
+    # plt.tight_layout()
+    # plt.savefig('plots/cars_all_distributions.png')
     
-    print("Grauwertverteilung der Fahrzeuge (alle Verteilungen) gespeichert als 'cars_all_distributions.png'")
+    # print("Grauwertverteilung der Fahrzeuge (alle Verteilungen) gespeichert als 'cars_all_distributions.png'")
 
 
     ### 2. Interpretieren Sie die Verteilungen. Weshalb unterscheiden sich diese?
 
     ### 3. Stellen Sie die empirische Grauwertverteilung der Straßenflächen auf und visualisieren Sie diese.
     streets = np.concatenate(streets)
-    plt.figure(figsize=(10, 5))
-    plt.hist(streets, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='purple', label='Streets')
-    plt.ylim(0, 0.02)
-    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
-    plt.xlabel('Grauwert')
-    plt.ylabel('Dichte')
-    plt.tight_layout()
-    plt.savefig('plots/streets_distribution.png')
+    # plt.figure(figsize=(10, 5))
+    # plt.hist(streets, bins=np.arange(257)-0.5, density=True, alpha=0.5, color='purple', label='Streets')
+    # plt.ylim(0, 0.02)
+    # plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.3f}".replace('.', ',')))
+    # plt.xlabel('Grauwert')
+    # plt.ylabel('Dichte')
+    # plt.tight_layout()
+    # plt.savefig('plots/streets_distribution.png')
     
-    print("Grauwertverteilung der Straßenflächen gespeichert als 'streets_distribution.png'")
+    # print("Grauwertverteilung der Straßenflächen gespeichert als 'streets_distribution.png'")
 
     ### 4. Erstellen Sie iterativ durch Verschieben des Detektionsschwellwertes die ROC-Kurve aus den Verteilungen 1a mit 3 sowie 1b mit 3
+    
+    # Verteilungen 1a (alle Pixel der Fahrzeugbilder) und 3 (Straßenbilder)
+    true_positive_rates_1a3 = []
+    false_positive_rates_1a3 = []
+      
+    for threshold in range(256):
+        # True Positives (TP) und False Positives (FP) zählen
+        tp = np.sum(cars <= threshold)
+        fn = np.sum(cars > threshold)
+        
+        fp = np.sum(streets <= threshold)
+        tn = np.sum(streets > threshold)
+        
+        # Berechnung der Raten
+        tpr = tp / (tp + fn)
+        fpr = fp / (fp + tn)
+        
+        true_positive_rates_1a3.append(tpr)
+        false_positive_rates_1a3.append(fpr)
+        
+    plt.figure(figsize=(10, 5))
+    plt.plot(false_positive_rates_1a3, true_positive_rates_1a3, label='ROC-Kurve (All cars vs Streets)')
+    plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
+    plt.title('ROC-Kurve für gesamte Fahrzeugbilder gegen Straßenbilder')
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.grid()
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('plots/roc_curve_all_cars_vs_streets.png')
+    
+    print("ROC-Kurve für gesamte Fahrzeugbilder gegen Straßenbilder gespeichert als 'roc_curve_all_cars_vs_streets.png'")
+    
+    # Verteilungen 1b (zentrale 3x3 Pixel der Fahrzeugbilder) und 3 (Straßenbilder)
+    true_positive_rates_1b3 = []
+    false_positive_rates_1b3 = []
+    
+    for threshold in range(256):
+        # True Positives (TP) und False Positives (FP) zählen
+        tp = np.sum(cars_central <= threshold)
+        fn = np.sum(cars_central > threshold)
+        
+        fp = np.sum(streets <= threshold)
+        tn = np.sum(streets > threshold)
+        
+        # Berechnung der Raten
+        tpr = tp / (tp + fn)
+        fpr = fp / (fp + tn)
+        
+        true_positive_rates_1b3.append(tpr)
+        false_positive_rates_1b3.append(fpr)
+        
+        
+    plt.figure(figsize=(10, 5))
+    plt.plot(false_positive_rates_1b3, true_positive_rates_1b3, label='ROC-Kurve (Central cars vs Streets)')
+    plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
+    plt.title('ROC-Kurve für zentrale 3x3 Pixel der Fahrzeugbilder gegen Straßenbilder')
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.grid()
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('plots/roc_curve_central_cars_vs_streets.png')
+    
+    print("ROC-Kurve für zentrale 3x3 Pixel der Fahrzeugbilder gegen Straßenbilder gespeichert als 'roc_curve_central_cars_vs_streets.png'")
 
     ### 5. Wie erklären Sie sich anhand der ROC-Kurve das Detektorverhalten? Welche Verbesserungen könnte man am Detektor anbringen, um die Detektionsperformance zu verbessern?
