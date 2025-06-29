@@ -157,6 +157,16 @@ if __name__ == "__main__":
     plt.legend()
     plt.tight_layout()
     plt.savefig('plots/roc_curve_all_cars_vs_streets.png')
+
+    # differenz
+    diffTprFpr_all = np.array(true_positive_rates_1a3)-np.array(false_positive_rates_1a3)
+    plt.figure(figsize=(10,5))
+    plt.scatter(np.arange(0,256,1),diffTprFpr_all)
+    plt.xlabel('Schwellwert')
+    plt.ylabel('Differenz TPR-FPR')
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig('plots/diff_roc_curve_all_cars_vs_streets.png')
     
     print("ROC-Kurve für gesamte Fahrzeugbilder gegen Straßenbilder gespeichert als 'roc_curve_all_cars_vs_streets.png'")
     
@@ -198,6 +208,16 @@ if __name__ == "__main__":
     plt.legend()
     plt.tight_layout()
     plt.savefig('plots/roc_curve_central_cars_vs_streets.png')
+
+    # differenz
+    diffTprFpr_cars = np.array(true_positive_rates_1b3) - np.array(false_positive_rates_1b3)
+    plt.figure(figsize=(10, 5))
+    plt.scatter(np.arange(0, 256, 1), diffTprFpr_cars)
+    plt.xlabel('Schwellwert')
+    plt.ylabel('Differenz TPR-FPR')
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig('plots/diff_roc_curve_central_cars_vs_streets.png')
     
     print("ROC-Kurve für zentrale 3x3 Pixel der Fahrzeugbilder gegen Straßenbilder gespeichert als 'roc_curve_central_cars_vs_streets.png'")
 
