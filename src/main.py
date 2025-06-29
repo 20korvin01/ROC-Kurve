@@ -137,9 +137,13 @@ if __name__ == "__main__":
         
         true_positive_rates_1a3.append(tpr)
         false_positive_rates_1a3.append(fpr)
-        
+
+    np.savetxt('rocPointsTaskA.txt', np.column_stack((np.round(np.array(false_positive_rates_1a3), 3),
+                                            np.round(np.array(true_positive_rates_1a3), 3),
+                                            np.arange(0, 256, 1))), delimiter=';', header='fpr,tpr,threshold', fmt='%.3f')
+
     plt.figure(figsize=(10, 5))
-    plt.plot(false_positive_rates_1a3, true_positive_rates_1a3, label='ROC-Kurve (All cars vs Streets)')
+    plt.scatter(false_positive_rates_1a3, true_positive_rates_1a3, label='ROC-Kurve (All cars vs Streets)')
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
     plt.title('ROC-Kurve für gesamte Fahrzeugbilder gegen Straßenbilder')
     plt.xlabel('False Positive Rate')
@@ -169,10 +173,14 @@ if __name__ == "__main__":
         
         true_positive_rates_1b3.append(tpr)
         false_positive_rates_1b3.append(fpr)
-        
-        
+
+    np.savetxt('rocPointsTaskB.txt',np.column_stack((np.round(np.array(false_positive_rates_1b3),3),
+                                            np.round(np.array(true_positive_rates_1b3),3),np.arange(0,256,1)))
+                                            ,delimiter=';',header='fpr,tpr,threshold',fmt='%.3f')
+
+
     plt.figure(figsize=(10, 5))
-    plt.plot(false_positive_rates_1b3, true_positive_rates_1b3, label='ROC-Kurve (Central cars vs Streets)')
+    plt.scatter(false_positive_rates_1b3, true_positive_rates_1b3, label='ROC-Kurve (Central cars vs Streets)')
     plt.plot([0, 1], [0, 1], linestyle='--', color='gray', label='Zufallsrate')
     plt.title('ROC-Kurve für zentrale 3x3 Pixel der Fahrzeugbilder gegen Straßenbilder')
     plt.xlabel('False Positive Rate')
